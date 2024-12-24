@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Email Sender</title>
+    <style>
+        form{
+            display: flex;
+            flex-direction: column;
+            width: 60%;
+            margin: auto;
+        }
+        form input,form textarea,form button{
+            padding: 20px;
+            margin-bottom: 20px;
+            outline: none;
+            border: none;
+            background-color: #ddd;
+        }
+        form button{
+            background-color: #333;
+            cursor: pointer;
+            color: #fff;
+        }
+        h1{
+            text-align: center;
+        }
+    </style>
+    
+</head>
+<body>
+    <h1>Contact Us</h1>
+    <form class="Contact_form" action="#">
+        <input class="name" type="text" placeholder="Name">
+        <input class="email" type="email" placeholder="Email">
+        <textarea class="msg" cols="5" rows="6" placeholder="Subject"> </textarea>
+        <button type="submit">Send Email</button>
+    </form>
+    <script src="https://smtpjs.com/v3/smtp.js">
+    </script>
+    <script>
+
+        const form = doctment.querySector('.Contact_form');
+        function sendMsg(e){
+            e.preventDefault();
+            
+            const name = doctment.querySector('.name');
+            email = doctment.querySector('.email');
+            msg = doctment.querySector('.msg');
+
+
+            Email.send({
+                SecureToken: "9b71237d-c796-4c26-a5c3-f3913ddc6d55",
+                To: 'chaudharidhiraj7020@gmail.com',
+                From: email.value,
+                Subject: "Contact Form",
+                Body: msg.value
+            }).then(
+                message => alert(message)
+            );
+        }
+
+        form.addEventListner('submit', sendMsg);
+
+
+    </script>
+</body>
+</html>
